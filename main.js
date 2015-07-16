@@ -59,18 +59,46 @@ var _ = {
 //the Fisher-Yates shuffle. Don't worry about implementing that exact shuffle
 //alogrithm. Start by creating your own simple shuffle.
 
+  // shuffle: function (array) {
+  //   for (var i = array.length - 1; i > 0; i--) {
+  //     var j = Math.floor(Math.random()*(i+1));
+  //     var temp = array[i];
+  //     array[i]= array[j];
+  //     array[j]= temp;
+  //   }
+  //   return array;
+  // }
+
   shuffle: function (array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random()*(i+1));
+    for (var i = 0; i < array.length; i--) {
+      var indexRandom = Math.floor(Math.random()*(i+1));
       var temp = array[i];
-      array[i]= array[j];
-      array[j]= temp;
+      array[i]= array[indexRandom];
+      array[indexRandom]= temp;
     }
-    return array
+    return array;
   }
-  ,
 
+//shuffle function pseudo code
+//1. start with an array
+//2. make a copy of the array, so we aren't impacting the original array
+//3. assign an array literal container (blank array)
+//4. for loop to loop through each element of the array copy
+//5. generate random index number
+//6. grab an element from the original array with random index
+//7. exit for loop
+//8. return array
 
+shuffle: function (array) {
+  var arrayCopy = array;
+  var shuffled = [];
+    while (arrayCopy.length > 0){
+      var randomIndex = Math.floor(Math.random()*arrayCopy.length);
+      shuffled.push(arrayCopy[randomIndex]);
+      arrayCopy.splice(randomIndex, 1);
+  }
+  return shuffled;
+}
 //sample --  Produce a random sample from the list. Pass a number to return n
 //random elements from the list. Otherwise a single random item will be returned.
   sample: function (array) {
