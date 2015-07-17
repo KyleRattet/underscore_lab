@@ -1,3 +1,4 @@
+////part ONE:::
 var _ = {
 ///average
   averageCalc: function (array) {
@@ -74,7 +75,64 @@ sample : function (array, num) {
   return shuffleArr.slice(0, num)
 },
 
+//difference - returns values from one array that aren't in another
+  difference: function (array1, array2) {
+    //create a new array to house what's different
+    var different = [];
+    //compare index values of arrays index
+    //use for loop to iterate through
+    for (var i = 0; i < array1.length; i++) {
+      if(.contains(array2, array1[i]) === false){
+        different.push(array1[i]);
+      }
+    }
+    return different;
+  },
 
+//  // indexOf - Returns the index at which value can be found in the array,
+  // or -1 if value is not present in the array.
+  indexOf: function (array, num) {
+    //variable to test if num is in the array
+    var inArray = false;
+    //for loop to see if number is in array
+    for (var i = 0; i < array.length; i++) {
+      if(num == array[i]){
+        inArray = true;
+        ///need to return the index at which that number is also
+        return i;
+      }
+    }
+    //if num not in the array, return -1
+    if (inArray != true) {
+      return -1;
+    }
+  },
+
+  //pluck - extracts list of property values and returns them in array
+  ///need to revisit here, not sure on the logic or output
+    pluck : function (array, property) {
+      values = [];
+      for (var i = 0; i < array.length; i++) {
+        values.push(array[i].name);
+      }
+      return values;
+    },
+
+///PART TWO:::
+
+
+///each - iterates over a list of property values and calls
+//a given function with each element
+
+  each: function (array, function) {
+    ///need to create a new variable to contain the returned prop values
+    var returnedArray = [];
+    ///need to create a loop to spit out a property from each item in array
+    for (var i = 0; i < array.length; i++) {
+      returnedArray.push(func(array[i]));
+    }
+    return returnedArray;
+  }
 
 
 //shuffle -- shuffle - Returns a shuffled copy of the list, using a version of
